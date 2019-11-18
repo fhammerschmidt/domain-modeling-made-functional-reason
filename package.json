@@ -1,0 +1,30 @@
+{
+  "name": "domain-modeling-made-functional-reason",
+  "version": "1.0.0",
+  "description": "Code examples from Scott Wlaschin's book \"Domain Modeling Made Functional\" converted from F# to ReasonML.",
+  "main": "index.js",
+  "scripts": {
+    "bs:world": "bsb -clean-world -make-world",
+    "bs:build": "bsb",
+    "bs:watch": "BS_WATCH_CLEAR=1 bsb -w",
+    "bs:clean": "bsb -clean",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "domain",
+    "modeling",
+    "made",
+    "functional",
+    "F#",
+    "ReasonML",
+    "Domain-Driven-Design",
+    "DDD"
+  ],
+  "author": "Florian Hammerschmidt",
+  "license": "MIT",
+  "dependencies": {
+    "bs-json": "^1.0.1",
+    "bs-platform": "^5.2.1",
+    "mongo-db": "^1.0.2"
+  }
+}

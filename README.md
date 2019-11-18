@@ -24,4 +24,10 @@ or
 yarn bs:world
 ```
 
-and execute one of the entrypoint with `node`.
+and execute one of the entrypoints with `node`.
+
+## Status
+
+- [ ] Chapters (0 %)
+- [ ] OrderTaking (60 %)
+- [ ] OrderTakingEvolved (0 %)

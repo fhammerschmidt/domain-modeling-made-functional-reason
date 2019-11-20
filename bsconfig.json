@@ -10,7 +10,7 @@
     "in-source": true
   },
   "suffix": ".bs.js",
-  "bs-dependencies": ["bs-json"],
+  "bs-dependencies": ["@glennsl/bs-json"],
   "warnings": {
     "error": "+101"
   },

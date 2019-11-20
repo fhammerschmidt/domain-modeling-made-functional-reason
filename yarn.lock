@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
+"@glennsl/bs-json@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-5.0.1.tgz#b19d0b45f4a80d52e6bfefa032ac99f4548f3083"
+  integrity sha512-tDxqeO4LCUz3HIwsdqyM4OIUk/bIV8QwDuhNbqy3hHIVEciePbJXTSyXMKsoIFs3ukQY8ZsQXskONtOK4TyLfA==
+
 bluebird@^3.4.1:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.1.tgz#df70e302b471d7473489acf26a93d63b53f874de"
   integrity sha512-DdmyoGCleJnkbp3nkbxTLJ18rjDsE4yCggEwKNXkeV123sPNfOCYeDoeuOY+F2FrSjO1YXcTU+dsy96KMy+gcg==
-
-bs-json@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bs-json/-/bs-json-1.0.1.tgz#0e25ed5ba7164ab131e494669b755da9844cc37e"
-  integrity sha512-0KaYGnn3CJnXwVnEWyTv9yejF991I2O118olKA4APPW8lxVt737Wu4M+UWU+GK8jjEDVb768lM/CdplvBmyy8g==
 
 bs-platform@^5.2.1:
   version "5.2.1"

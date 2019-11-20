@@ -23,7 +23,7 @@
   "author": "Florian Hammerschmidt",
   "license": "MIT",
   "dependencies": {
-    "bs-json": "^1.0.1",
+    "@glennsl/bs-json": "^5.0.1",
     "bs-platform": "^5.2.1",
     "mongo-db": "^1.0.2"
   }

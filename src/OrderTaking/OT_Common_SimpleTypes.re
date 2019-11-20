@@ -1,6 +1,6 @@
 open Belt;
 
-module PdfAttachment = {
+module type PdfAttachment = {
   type t = {
     name: string,
     bytes: array(string) // string = byte
@@ -59,25 +59,42 @@ module ConstrainedType = {
     };
 };
 
+module type String50 = {
+  type t = pri | String50(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+  let createOption: (string, string) => Belt.Result.t(t, string);
+};
+
 module String50 = {
   type t =
     | String50(string);
 
-  let value =
-    fun
-    | String50(str) => str;
+  let value = (String50(str)) => str;
 
   let create = (fieldName, str) =>
     ConstrainedType.createString(fieldName, String50(str), 50, str);
+
+  let createOption = (fieldName, str) =>
+    ConstrainedType.createStringOption(
+      fieldName,
+      Some(String50(str)),
+      50,
+      str,
+    );
 };
 
-module EmailAddress = {
+module type EmailAddress = {
+  type t = pri | EmailAddress(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module EmailAddress: EmailAddress = {
   type t =
     | EmailAddress(string);
 
-  let value =
-    fun
-    | EmailAddress(str) => str;
+  let value = (EmailAddress(str)) => str;
 
   let create = (fieldName, str) => {
     let pattern = ".+@.+";
@@ -85,13 +102,17 @@ module EmailAddress = {
   };
 };
 
+module type ZipCode = {
+  type t = pri | ZipCode(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
 module ZipCode = {
   type t =
     | ZipCode(string);
 
-  let value =
-    fun
-    | ZipCode(str) => str;
+  let value = (ZipCode(str)) => str;
 
   let create = (fieldName, str) => {
     let pattern = "\d{5}";
@@ -99,37 +120,49 @@ module ZipCode = {
   };
 };
 
-module OrderId = {
+module type OrderId = {
+  type t = pri | OrderId(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module OrderId: OrderId = {
   type t =
     | OrderId(string);
 
-  let value =
-    fun
-    | OrderId(str) => str;
+  let value = (OrderId(str)) => str;
 
   let create = (fieldName, str) =>
     ConstrainedType.createString(fieldName, OrderId(str), 50, str);
 };
 
-module OrderLineId = {
+module type OrderLineId = {
+  type t = pri | OrderLineId(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module OrderLineId: OrderLineId = {
   type t =
     | OrderLineId(string);
 
-  let value =
-    fun
-    | OrderLineId(str) => str;
+  let value = (OrderLineId(str)) => str;
 
   let create = (fieldName, str) =>
     ConstrainedType.createString(fieldName, OrderLineId(str), 50, str);
 };
 
-module WidgetCode = {
+module type WidgetCode = {
+  type t = pri | WidgetCode(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module WidgetCode: WidgetCode = {
   type t =
     | WidgetCode(string);
 
-  let value =
-    fun
-    | WidgetCode(str) => str;
+  let value = (WidgetCode(str)) => str;
 
   let create = (fieldName, code) => {
     let pattern = "W\d{4}";
@@ -137,13 +170,17 @@ module WidgetCode = {
   };
 };
 
-module GizmoCode = {
+module type GizmoCode = {
+  type t = pri | GizmoCode(string);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module GizmoCode: GizmoCode = {
   type t =
     | GizmoCode(string);
 
-  let value =
-    fun
-    | GizmoCode(str) => str;
+  let value = (GizmoCode(str)) => str;
 
   let create = (fieldName, code) => {
     let pattern = "G\d{3}";
@@ -151,7 +188,13 @@ module GizmoCode = {
   };
 };
 
-module ProductCode = {
+module type ProductCode = {
+  type t = pri | Widget(WidgetCode.t) | Gizmo(GizmoCode.t);
+  let value: t => string;
+  let create: (string, string) => Belt.Result.t(t, string);
+};
+
+module ProductCode: ProductCode = {
   type t =
     | Widget(WidgetCode.t)
     | Gizmo(GizmoCode.t);
@@ -173,26 +216,34 @@ module ProductCode = {
   };
 };
 
-module UnitQuantity = {
+module type UnitQuantity = {
+  type t = pri | UnitQuantity(int);
+  let value: t => int;
+  let create: (string, int) => Belt.Result.t(t, string);
+};
+
+module UnitQuantity: UnitQuantity = {
   type t =
     | UnitQuantity(int);
 
-  let value =
-    fun
-    | UnitQuantity(v) => v;
+  let value = (UnitQuantity(v)) => v;
 
   let create = (fieldName, v) => {
     ConstrainedType.createInt(fieldName, UnitQuantity(v), 1, 1000, v);
   };
 };
 
-module KilogramQuantity = {
+module type KilogramQuantity = {
+  type t = pri | KilogramQuantity(float);
+  let value: t => float;
+  let create: (string, float) => Belt.Result.t(t, string);
+};
+
+module KilogramQuantity: KilogramQuantity = {
   type t =
     | KilogramQuantity(float);
 
-  let value =
-    fun
-    | KilogramQuantity(v) => v;
+  let value = (KilogramQuantity(v)) => v;
 
   let create = (fieldName, v) => {
     ConstrainedType.createFloat(
@@ -205,7 +256,13 @@ module KilogramQuantity = {
   };
 };
 
-module OrderQuantity = {
+module type OrderQuantity = {
+  type t = pri | Unit(UnitQuantity.t) | Kilogram(KilogramQuantity.t);
+  let value: t => float;
+  let create: (string, ProductCode.t, float) => Belt.Result.t(t, string);
+};
+
+module OrderQuantity: OrderQuantity = {
   type t =
     | Unit(UnitQuantity.t)
     | Kilogram(KilogramQuantity.t);
@@ -226,13 +283,18 @@ module OrderQuantity = {
     };
 };
 
-module Price = {
+module type Price = {
+  type t = pri | Price(float);
+  let value: t => float;
+  let create: float => Belt.Result.t(t, string);
+  let createExn: float => t;
+};
+
+module Price: Price = {
   type t =
     | Price(float);
 
-  let value =
-    fun
-    | Price(v) => v;
+  let value = (Price(v)) => v;
 
   let create = v =>
     ConstrainedType.createFloat("Price", Price(v), 0.0, 1000.0, v);
@@ -240,13 +302,18 @@ module Price = {
   let createExn = v => create(v)->Result.getExn;
 };
 
-module BillingAmount = {
+module type BillingAmount = {
+  type t = pri | BillingAmount(float);
+  let value: t => float;
+  let create: float => Belt.Result.t(t, string);
+  let sumPrices: list(Price.t) => Belt.Result.t(t, string);
+};
+
+module BillingAmount: BillingAmount = {
   type t =
     | BillingAmount(float);
 
-  let value =
-    fun
-    | BillingAmount(v) => v;
+  let value = (BillingAmount(v)) => v;
 
   /// Create a BillingAmount from a decimal.
   /// Return Error if input is not a decimal between 0.0 and 10000.00

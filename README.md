@@ -29,5 +29,5 @@ and execute one of the entrypoints with `node`.
 ## Status
 
 - [ ] Chapters (0 %)
-- [ ] OrderTaking (60 %)
+- [ ] OrderTaking (70 %)
 - [ ] OrderTakingEvolved (0 %)

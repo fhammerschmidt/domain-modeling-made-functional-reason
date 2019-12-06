@@ -151,6 +151,7 @@ module Async = {
 };
 
 module AsyncResult = {
+  type t('success, 'failure) = Result.t('success, 'failure);
   /* TODO: Implement something comparable to AsyncResult */
 };
 

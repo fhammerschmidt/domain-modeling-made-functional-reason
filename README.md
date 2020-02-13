@@ -10,7 +10,7 @@ Similar to the original, the folder structure is as follows: `/src` contains the
 
 Every F# `.fs`and `.fsx` file has an equivalent `.re` counterpart. Besides BuckleScript itself I use the available `Belt` or `Js` modules, as well as `MongoDB` as an Document Storage System and `PostgreSQL` as a relational database. For serialization and deserialization, `bs-json` is used.
 
-## Usage
+<!-- ## Usage
 
 To compile the whole project, just execute
 
@@ -24,7 +24,7 @@ or
 yarn bs:world
 ```
 
-and execute one of the entrypoints with `node`.
+and execute one of the entrypoints with `node`. -->
 
 ## Status
 

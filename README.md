@@ -8,7 +8,7 @@ For the original F# source code please refer to the corresponding [The Pragmatic
 
 Similar to the original, the folder structure is as follows: `/src` contains the folders `Chapters`, `OrderTaking` and `OrderTakingEvolved`. For the sake of simplicity, I only put any of them in their own namespace module and did not make three different projects out of them. `Chapters` files are prefixed with `Ch_`, `OrderTaking` files are prefixed with `OT_` and `OrderTakingEvolved` files are prefixed with `OTE_` accordingly.
 
-Every F# `.fs`and `.fsx` file has an equivalent `.re` counterpart. Besides BuckleScript itself I use the available `Belt` or `Js` modules, as well as `MongoDB` as an Document Storage System and `PostgreSQL` as a relational database. For serialization and deserialization, `bs-json` is used.
+<!-- Every F# `.fs`and `.fsx` file has an equivalent `.re` counterpart. Besides BuckleScript itself I use the available `Belt` or `Js` modules, as well as `MongoDB` as an Document Storage System and `PostgreSQL` as a relational database. For serialization and deserialization, `bs-json` is used. -->
 
 <!-- ## Usage
 
